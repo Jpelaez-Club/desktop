@@ -24,6 +24,13 @@
 
   .breadcrumb {
     margin-top: 10px;
+    font-family: 'Rubik';
+    color: #808080;
+    > a {
+      color: #808080;
+    }
+    font-weight: 500;
+    font-size: 14px;
   }
 }
 
