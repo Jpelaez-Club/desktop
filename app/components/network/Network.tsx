@@ -81,7 +81,7 @@ async function homeFeed (): Promise<NetworkHomeData> {
     method: 'GET'
   }
 
-  const r = await fetch(`http://localhost:2503/feed/home`, options)
+  const r = await fetch(`http://localhost:2503/registry/feed/home`, options)
   const res = await r.json()
   if (res.meta.code !== 200) {
     var err = { code: res.meta.code, message: res.meta.error }
