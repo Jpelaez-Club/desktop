@@ -6,11 +6,10 @@ import { Modal } from '../../models/modals'
 import { P2PConnection, NetworkHomeData } from '../../models/network'
 import P2PConnectionStatus from './P2PConnectionStatus'
 
-import Dataset from '../dataset/Dataset'
+// import Dataset from '../dataset/Dataset'
 
 import Navbar from '../nav/Navbar'
-// import NetworkHome from './NetworkHome'
-import cities from '../../../stories/data/cities.dataset.json'
+import NetworkHome from './NetworkHome'
 
 export interface NetworkProps {
   sidebarWidth: number
@@ -51,8 +50,8 @@ const Network: React.FunctionComponent<NetworkProps> = (props) => {
       <div className='main-content-flex' style={{ overflow: 'auto' }}>
         {/* TODO (b5) - navbar shouldn't be loaded here, should be in App.tsx, needs location */}
         <Navbar location={''} />
-        <Dataset data={cities} />
-        {/* <NetworkHome data={data} loading={loading} error={error} /> */}
+        {/* <Dataset data={cities} /> */}
+        <NetworkHome data={data} loading={loading} error={error} />
       </div>
     </>
   )

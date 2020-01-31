@@ -3,6 +3,7 @@ import * as React from 'react'
 import Dataset from '../../models/dataset'
 import DatasetDetailsSubtext from '../dataset/DatasetDetailsSubtext'
 import Tag from './Tag'
+import { Link } from 'react-router-dom'
 
 interface DatasetItemProps {
   data: Dataset
@@ -19,7 +20,7 @@ const DatasetItem: React.FunctionComponent<DatasetItemProps> = ({ data, path, hi
   return (
     <div className='dataset-item' key={path}>
       <div className='header'>
-        <a href={`/${peername}/${name}`}>{hideUsername ? `${name}` : `${peername}/${name}`}</a>
+        <Link to={`/network/${peername}/${name}`}>{hideUsername ? `${name}` : `${peername}/${name}`}</Link>
         {meta && meta.themes && meta.themes.length > 1 && <Tag type='category' tag={meta.themes[0]} />}
       </div>
       <div className='title'>{ title }</div>
