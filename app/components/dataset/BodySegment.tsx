@@ -1,9 +1,9 @@
 import React from 'react'
 
-import Body from '../Body'
+import BodyPreview from './BodyPreview'
 
 import { Dataset as IDataset } from '../../models/dataset'
-import { CommitDetails as ICommitDetails } from '../../models/store'
+// import { CommitDetails as ICommitDetails } from '../../models/store'
 import Segment from '../chrome/Segment'
 import { DetailsType } from '../../models/details'
 
@@ -12,32 +12,32 @@ interface BodySegmentProps {
   data: IDataset
 }
 
-const datasetToCommitDetails = (d: IDataset): ICommitDetails => {
-  const c: ICommitDetails = {
-    name: d.name,
-    path: d.path,
-    peername: d.peername,
-    status: {},
-    components: {
-      meta: {
-        value: d.meta
-      },
-      structure: {
-        value: d.structure
-      },
-      readme: {
-        value: d.readme
-      },
-      commit: {
-        value: d.commit
-      },
-      body: {
-        value: d.body
-      }
-    }
-  }
-  return c
-}
+// const datasetToCommitDetails = (d: IDataset): ICommitDetails => {
+//   const c: ICommitDetails = {
+//     name: d.name,
+//     path: d.path,
+//     peername: d.peername,
+//     status: {},
+//     components: {
+//       meta: {
+//         value: d.meta
+//       },
+//       structure: {
+//         value: d.structure
+//       },
+//       readme: {
+//         value: d.readme
+//       },
+//       commit: {
+//         value: d.commit
+//       },
+//       body: {
+//         value: d.body
+//       }
+//     }
+//   }
+//   return c
+// }
 
 const BodySegment: React.FunctionComponent<BodySegmentProps> = ({ data }) => {
   if (!data.body) {
@@ -54,8 +54,8 @@ const BodySegment: React.FunctionComponent<BodySegmentProps> = ({ data }) => {
     name='body'
     subhead={structure ? `previewing ${previewRowsNum} of ${totalRows.toLocaleString()} rows` : ''}
     content={
-      <Body
-        data={datasetToCommitDetails(data)}
+      <BodyPreview
+        data={data}
         details={{ type: DetailsType.NoDetails }}
       />
     }/>

@@ -8,6 +8,7 @@ import Signin from './components/Signin'
 import CollectionContainer from './containers/CollectionContainer'
 import DatasetContainer from './containers/DatasetContainer'
 import NetworkContainer from './containers/NetworkContainer'
+import DatasetPreviewContainer from './containers/DatasetPreviewContainer'
 
 export default function Routes (props: any) {
   const {
@@ -45,12 +46,21 @@ export default function Routes (props: any) {
           }} />
 
           { __BUILD__.ENABLE_NETWORK_SECTION &&
-            <Route exact path='/network' render={() => {
-              ipcRenderer.send('show-dataset-menu', false)
-              if (!hasAcceptedTOS) return <Redirect to='/' />
-              if (!qriCloudAuthenticated) return <Redirect to='/signup' />
-              return <NetworkContainer setModal={setModal} />
-            }} />
+            <>
+              <Route exact path='/network' render={() => {
+                ipcRenderer.send('show-dataset-menu', false)
+                if (!hasAcceptedTOS) return <Redirect to='/' />
+                if (!qriCloudAuthenticated) return <Redirect to='/signup' />
+                return <NetworkContainer setModal={setModal} />
+              }} />
+              <Route path='/network/:user/:dataset' render={(props) => {
+                const { user, dataset } = props.match.params
+                ipcRenderer.send('show-dataset-menu', false)
+                if (!hasAcceptedTOS) return <Redirect to='/' />
+                if (!qriCloudAuthenticated) return <Redirect to='/signup' />
+                return <DatasetPreviewContainer dsref={`${user}/${dataset}`} />
+              }} />
+            </>
           }
 
           {/* Datasets */}
