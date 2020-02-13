@@ -153,7 +153,8 @@ module.exports = merge(baseConfig, {
        *
        */
       '__BUILD__': {
-        'ENABLE_NETWORK_SECTION': JSON.stringify(true)
+        'ENABLE_NETWORK_SECTION': JSON.stringify(true),
+        'ENABLE_COMPARE_SECTION': JSON.stringify(true)
       }
     }),
 
